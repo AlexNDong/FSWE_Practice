@@ -1,0 +1,100 @@
+1. Install git
+https://git-scm.com/install/linuxgit
+Run command /sudo add-apt-repository ppa:git-core/ppa/
+Run command /sudo apt update/ /sudo apt install git/
+
+2. Check if we have installed
+Run /git --help/
+
+3. Configure
+Run /git config --list/
+git config --global user.name "ThienDONG"
+git config --global user.email "thiendn061@gmail.com"
+ssh-keygen -t ed25519 -C "thiendn061@gmail.com"
+
+The key fingerprint is:
+SHA256:PWIzHpG74s24TSEaPqm/Jck/qxsm/tSJcGY1Q2XSH10 thiendn061@gmail.com
+The key's randomart image is:
++--[ED25519 256]--+
+|      ooo  . .E  |
+|     . o... .    |
+|      + o. .     |
+|     . o +.      |
+|  . = . S o      |
+|   B B = B .     |
+|  . & = +        |
+| . = B.B         |
+|  oo*+*++        |
++----[SHA256]-----+
+
+Now in the ~/.ssh folder, it include 2 file
++ id_ed25519 (private key)
++ id_ed25519.pub (public key) we will use it to connect to github
+
+4. Read the public file
+cat ~/.ssh/id_ed25519.pub
+Then copy
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJWRyZrBbcU4UF99QTz/AfYtvgznEB4liK9dEJjuQxk1 thiendn061@gmail.com
+
+5. Check to makesure the connection
+ssh -T git@github.com
+
+As we have connected with github, we added "github.com" ED25519 to the list of known hosts
+
+
+NOTE:
+If we want to use git on windows system of this machine, we need to configure the git again on windows system
+Because
+- If we work on one Project -> ONe repository in github
+- sometime work on Utunbu, sometime on windows
+----> we need to configure one GIt on Windows as well
+Ubuntu → SSH key A → GitHub repo
+Windows → SSH key B → GitHub repo
+
+
+WORKING WITH GIT AFTER LINKING GIT TO GITHUB WITH .SSH (config)
+
+1. Create project that link with git
+run /git init/ in the project you want to sync with github
+2. To remove the .git in the project, run /rm -rf .git/
+3. When a code file: i.e. temp.txt, haha.py created (by default, they are untracked by git), to allow git tracking them, run /git add filename.ext/
+Now, all the files are in "STAGING AREA", and the modification will be tracked
+-->>> git add filename (put file to STAGING AREA)
+-->>> git add --all (to add all files to staging area)
+4. To commit, run "git commit", it will commit all files are currently in the "STAGING AREA"
+/git commit -m "message"/ to commit file with a message after changing so git can track control version
+- This change will be tracked with an "Index"
+
+5. Check git status /git status/, Check logging /git log/
+
+6. How to go back to previous stage ? (Time travel)
+Each commit will generate a code (by checking /git log/), for instance, th project step 3 has the code:
+4170b50e74b3a4d1dcaa745458ad2d0beddc554e
+we can run /git revert 4170b50e74b3a4d1dcaa745458ad2d0beddc554e/ to go back to step 3
+
+
+### GIT BRANCH ###
+1. Check branch /git branch/, rename the current branch /git branch -M new_branch_name/
+2. Create one more branch /git checkout -b branch_name/
+Note: if we change file on one branch, the other branches will stay the same, we can merge it later
+3. Change brach /git checkout branch_name/
+Note: if we commit information on one branch, the other branches will not be modify
+4. To merge two branches /git merge
+For instance, we are currenly in branch "main", while newer information in branch "new_feature", to merge it using
+/git merge
+Note: the current branch we are in, if we create the next branch, this branch will take all inheritation of the current branch
+
+### GITHUB ### - Remote repo
+# After commit to local git, we now want to push it to github, or pull some version from github and continue working on locall
+1. Create repo on github
+After creating a repo on github, we receive:
+--- a HTTPs link: https://github.com/AlexNDong/Gitdemo.git
+--- or a SSH link: git@github.com:AlexNDong/Gitdemo.git
+2. Clone remote repo to our working directory
+THe remote repo is in link: https://github.com/AlexNDong/Gitdemo.git
+TO clone, we open terminal in directory we want to work on that and command: /git clone https://github.com/AlexNDong/Gitdemo.git/
+Example: ~/Documents/FSWE/Lesson5_GIt/git_practice$ git clone https://github.com/AlexNDong/Gitdemo.git
+to clone a Gitdemo project in "git_practice" directory
+In the Gitdemo directory, we also have git init
+3. Push to remove repo
+After making changes after clone a repo to local, commit, then we can push it to remote repo again using /git push

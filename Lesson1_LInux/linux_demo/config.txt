@@ -1,0 +1,6 @@
+server=192.198.0.0.1
+port=8080
+database=friend
+course=FSWE
+learner=THIEN
+status=notcomplete
