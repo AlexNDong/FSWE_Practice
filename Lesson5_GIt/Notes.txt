@@ -13,18 +13,9 @@ git config --global user.email "thiendn061@gmail.com"
 ssh-keygen -t ed25519 -C "thiendn061@gmail.com"
 
 The key fingerprint is:
-SHA256:PWIzHpG74s24TSEaPqm/Jck/qxsm/tSJcGY1Q2XSH10 thiendn061@gmail.com
+SHA256:........................thiendn061@gmail.com
 The key's randomart image is:
 +--[ED25519 256]--+
-|      ooo  . .E  |
-|     . o... .    |
-|      + o. .     |
-|     . o +.      |
-|  . = . S o      |
-|   B B = B .     |
-|  . & = +        |
-| . = B.B         |
-|  oo*+*++        |
 +----[SHA256]-----+
 
 Now in the ~/.ssh folder, it include 2 file
@@ -34,7 +25,7 @@ Now in the ~/.ssh folder, it include 2 file
 4. Read the public file
 cat ~/.ssh/id_ed25519.pub
 Then copy
-ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJWRyZrBbcU4UF99QTz/AfYtvgznEB4liK9dEJjuQxk1 thiendn061@gmail.com
+ssh-ed25519 .............................. thiendn061@gmail.com
 
 5. Check to makesure the connection
 ssh -T git@github.com
